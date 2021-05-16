@@ -94,12 +94,6 @@ public class Main {
 
         System.out.println("TEST2");
 
-//            Actions builder = new Actions(driver);
-//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/']")));
-//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']")));
-//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/perforatory/']")));
-//            builder.click(driver.findElement(By.xpath("//a[@href='/catalog/perforatory/']")));
-
         Actions actions = new Actions(driver);
         driver.findElement(By.xpath("//a[@href='/catalog/']")).click();
         WebElement menu = driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']"));
@@ -217,7 +211,7 @@ public class Main {
 
 
                 Assert.assertEquals(actualREZULT, expectedResult,nameWere);
-                System.out.println(valueWere + ".NAME_WERE: " + nameWere + "; RAND=" + j + ";\n ACTUAL PRICE: " + actualREZULT + ";\n OLD PRICE: " + valueOldPrice + ";\n EXPECTED RESULT: " + expectedResult + ";\n SALE: " + sale + "%");
+              //  System.out.println(valueWere + ".NAME_WERE: " + nameWere + "; RAND=" + j + ";\n ACTUAL PRICE: " + actualREZULT + ";\n OLD PRICE: " + valueOldPrice + ";\n EXPECTED RESULT: " + expectedResult + ";\n SALE: " + sale + "%");
 
             }
             driver.findElement(By.partialLinkText("Следующая")).click();
