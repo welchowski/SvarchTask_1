@@ -1,98 +1,108 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 //
 import java.util.*;
 
-public class Main {
+public class Main extends MethodsAndProperties {
 
 
-    WebDriver driver;
-
-    @BeforeTest
-
-    public void preConditions() {
-
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://kulibin.com.ua/");
-
-
-    }
+//    @BeforeTest
+//
+//    public void preConditions() {
+//
+//        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.get("https://kulibin.com.ua/");
+//
+//
+//    }
 
     @Test(enabled = true)
     public void Test1() throws InterruptedException {
-        System.out.println("TEST1");
+        navigate(findByXpath(ELECTROINSTRUMENT_PATH), findByXpath(DRELI_PATH));
+//for (i=0;i<10;i++){
+       // System.out.println(rand(10));}
+       // print("LPD");
+         randClick(CRADS_WITH_SALE, OLD_PRICE_IN_CARD, 2, 3);
+      //  isPresent("//a[@title='Дрель ударная Makiiiiiiita (HP1640)']");
+       // System.out.println((isPresent("//h4[@class='s_title']")));
+       // print(getName(NAME+"["+3+"]"));
+        //  System.out.println(size(SALES_FLAG)+getName(CRADS_WITH_SALE));
+        //System.out.println(GetNumberFromText(OLD_PRICE));
+        // System.out.println(Sizee(SALES_FLAG));
         //clickOnMenu
 
-        System.out.println("bbbbb");
-
-        Actions actions = new Actions(driver);
-        driver.findElement(By.xpath("//a[@href='/catalog/']")).click();
-        WebElement menu = driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']"));
-        WebElement elementInMenu = driver.findElement(By.xpath("//a[@href='/catalog/dreli/']"));
-        actions.moveToElement(menu).moveToElement(elementInMenu).click().build().perform();
-
-
-//        driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']")).click();
-//        driver.findElement(By.xpath("//a[@title='Дрели']")).click();
-//        driver.findElements(By.className("old-price"));
-
-
-        //sizeElements
-
-        List<WebElement> xpath = driver.findElements(By.xpath("//span[@style='display:block;']"));
-        int xpathCount = xpath.size();
-        System.out.println("Total xpath: " + xpathCount);
-
-        int numberCards = 3;
-
-        //RandomClickAndCheck
-        for (int i = 0; i < numberCards; i++) {
-            //numberRandomCards
-
-            int min = 1;
-            int max = xpathCount;
-            int diff = max - min;
-            Random random = new Random();
-            int j = random.nextInt(diff + 1) + min;
-
-            driver.findElement(By.xpath("(//span[@style='display:block;']/../../../a)[" + j + "]")).click();
-            System.out.println("rand value " + i + ": " + j);
-
-            if (driver.findElements(By.xpath("//span[@class='item_old_price old-price']")).size() != 0) {
-                System.out.println("Element old_price is Present");
-
-                int ede = driver.findElements(By.xpath("//span[@class='item_old_price old-price']")).size();
-                System.out.println(ede);
-
-            } else {
-                // Assert.fail("Element old_price is NOT Present");
-                System.out.println("Element old_price is NOT Present");
-            }
-
-            if (driver.findElements(By.xpath("//div[@class='item-print-block']//span[@class='price']")).size() != 0) {
-                System.out.println("Element price is Present");
-
-            } else {
-                // Assert.fail("Element price is NOT Present");
-                System.out.println("Element price is NOT Present");
-            }
-            driver.navigate().back();
-        }
+//        System.out.println("bbbbb");
+//
+//        Actions actions = new Actions(driver);
+//        driver.findElement(By.xpath("//a[@href='/catalog/']")).click();
+//        WebElement menu = driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']"));
+//        WebElement elementInMenu = driver.findElement(By.xpath("//a[@href='/catalog/dreli/']"));
+//        actions.moveToElement(menu).moveToElement(elementInMenu).click().build().perform();
+//
+//
+////        driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']")).click();
+////        driver.findElement(By.xpath("//a[@title='Дрели']")).click();
+////        driver.findElements(By.className("old-price"));
+//
+//
+//        //sizeElements
+//
+//        List<WebElement> xpath = driver.findElements(By.xpath("//span[@style='display:block;']"));
+//        int xpathCount = xpath.size();
+//        System.out.println("Total xpath: " + xpathCount);
+//
+//        int numberCards = 3;
+//
+//        //RandomClickAndCheck
+//        for (int i = 0; i < numberCards; i++) {
+//            //numberRandomCards
+//
+//            int min = 1;
+//            int max = xpathCount;
+//            int diff = max - min;
+//            Random random = new Random();
+//            int j = random.nextInt(diff + 1) + min;
+//
+//            driver.findElement(By.xpath("(//span[@style='display:block;']/../../../a)[" + j + "]")).click();
+//            System.out.println("rand value " + i + ": " + j);
+//
+//            if (driver.findElements(By.xpath("//span[@class='item_old_price old-price']")).size() != 0) {
+//                System.out.println("Element old_price is Present");
+//
+//                int ede = driver.findElements(By.xpath("//span[@class='item_old_price old-price']")).size();
+//                System.out.println(ede);
+//
+//            } else {
+//                // Assert.fail("Element old_price is NOT Present");
+//                System.out.println("Element old_price is NOT Present");
+//            }
+//
+//            if (driver.findElements(By.xpath("//div[@class='item-print-block']//span[@class='price']")).size() != 0) {
+//                System.out.println("Element price is Present");
+//
+//            } else {
+//                // Assert.fail("Element price is NOT Present");
+//                System.out.println("Element price is NOT Present");
+//            }
+//            driver.navigate().back();
+//        }
     }
 
     @Test(dependsOnMethods = {"Test1"}, alwaysRun = true)
     public void Test2() throws InterruptedException {
 
         System.out.println("TEST2");
+
+//            Actions builder = new Actions(driver);
+//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/']")));
+//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/elektroinstrument/']")));
+//            builder.moveToElement(driver.findElement(By.xpath("//a[@href='/catalog/perforatory/']")));
+//            builder.click(driver.findElement(By.xpath("//a[@href='/catalog/perforatory/']")));
 
         Actions actions = new Actions(driver);
         driver.findElement(By.xpath("//a[@href='/catalog/']")).click();
@@ -210,8 +220,8 @@ public class Main {
                 expectedResult = valuePrice;
 
 
-                Assert.assertEquals(actualREZULT, expectedResult,nameWere);
-              //  System.out.println(valueWere + ".NAME_WERE: " + nameWere + "; RAND=" + j + ";\n ACTUAL PRICE: " + actualREZULT + ";\n OLD PRICE: " + valueOldPrice + ";\n EXPECTED RESULT: " + expectedResult + ";\n SALE: " + sale + "%");
+                Assert.assertEquals(actualREZULT, expectedResult, nameWere);
+                System.out.println(valueWere + ".NAME_WERE: " + nameWere + "; RAND=" + j + ";\n ACTUAL PRICE: " + actualREZULT + ";\n OLD PRICE: " + valueOldPrice + ";\n EXPECTED RESULT: " + expectedResult + ";\n SALE: " + sale + "%");
 
             }
             driver.findElement(By.partialLinkText("Следующая")).click();
@@ -219,10 +229,10 @@ public class Main {
         }
     }
 
-    @AfterTest
-    public void afterTest() throws InterruptedException {
-        driver.close();
-    }
+//    @AfterTest
+//    public void afterTest() throws InterruptedException {
+//        driver.close();
+//    }
 }
 
 
